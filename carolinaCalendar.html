@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Carolina Calendar</title>
+    <link rel="stylesheet" type="text/css" href="carolinaStyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="carolinaCal.js"></script>
+    <script type="text/javascript" src="events.js"></script>
+    <script type="text/javascript" src="postAssignments.js"></script>
+    <script type="text/javascript" src="assignment.js"></script>
+    <script type="text/javascript" src="card.js"></script>
+</head>
+
+    <body>
+        <div id="calendar">
+            <h1>Carolina Calendar</h1>
+            <div class="nav">
+                <ul>
+                    <li><input id="carolinaCalendar" type="button" value="Calendar"></li>
+                    <li><input id="findCourses" type="button" value="Find Courses"></li>
+                    <li id="about"><a href="about.html">About</a></li>
+                </ul>
+            </div>
+        
+            <div class="month">
+                <ul>
+                    <li class="prev"><input type="button" value="&#10094;"></li>
+                    <li class="next"><input type="button" value="&#10095;"></li>
+                    <li><span id="currentMonth"></span><br><span id="year">2016</span></li>
+                </ul>
+            </div>
+
+            <ul class="weekdays">
+                <li>Mo</li>
+                <li>Tu</li>
+                <li>We</li>
+                <li>Th</li>
+                <li>Fr</li>
+                <li>Sa</li>
+                <li>Su</li>
+            </ul>
+
+
+        <div id="tables">
+            <table class="days" id="august"></table>
+            <table class="days" id="september"></table>
+            <table class="days" id="october"></table>
+            <table class="days" id="november"></table>
+            <table class="days" id="december"></table>
+        </div>
+    </div>
+
+    <div id="addEvents">
+        <h1>Find Courses</h1>
+        <div class="nav">
+            <ul>
+                <li><input id="cal" type="button" value="Calendar"></li>
+                <li><input id="findCourses" type="button" value="Find Courses"></li>
+                <li id="about"><a href="about.html">About</a></li>
+            </ul>
+        </div>
+        <div id="searchContent">
+            <input type="text" id="inputName" maxlength="4" placeholder="COMP" style="display: inline;">
+            <select id="equality" style="display: inline;">
+                <option id="equals" value="equals" selected>&#61;</option>
+                <option id="lessThan" value="lessThan">&#60;</option>
+                <option id="greaterThan" value="greaterThan">&#62;</option>
+            </select>
+            <input id="inputNumber" type="text" placeholder="426" maxlength="3" style="display: inline;">
+            <br>
+            <button id="search" onclick="search('true');" style="margin-right: 70px;">Search</button>
+            <button id="reset" onclick="search('false');" style="margin-right: 75px; display: none;">Reset</button>
+        </div>
+
+        <div id="cards">
+            <!--using these to test the event codes but eventually will delete them since the event.js file will fill in
+                all of the necessary courses on page start-->
+            <div id="listCourses" onclick="flip('BIOL525', event);">
+                <div class="course" id="BIOL525">
+                    <div class="courseName">
+                        <center>BIOL</center>
+                    </div>
+                    <div class="courseNumber">
+                        <center>525</center>
+                    </div>
+                    <!--<button id="1" style="margin: auto" onclick="addClass(1,'BIOL525')"><strong>Add</strong></button>-->
+                    <button id="1" class="add_button" style="margin: auto" ><strong>Add</strong></button>
+
+                </div>
+            </div>
+
+            <div id="listCourses" onclick="flip('ENST201', event);">
+                <div class="course" id="ENST201">
+                    <div class="courseName">
+                        <center>ENST</center>
+                    </div>
+                    <div class="courseNumber">
+                        <center>201</center>
+                    </div>
+                    <!--<button id="2" style="margin: auto" onclick="addClass(2,'ENST201')"><strong>Add</strong></button>-->
+                    <button id="2" class="add_button" style="margin: auto" ><strong>Add</strong></button>
+                </div>
+            </div>
+
+            <div id="listCourses" onclick="flip('COMP401', event);">
+                <div class="course" id="COMP401">
+                    <div class="courseName">
+                        <center>comp</center>
+                    </div>
+                    <div class="courseNumber">
+                        <center>401</center>
+                    </div>
+                    <!--<button id="3" style="margin: auto" onclick="addClass(3,'COMP401')"><strong>Add</strong></button>-->
+                    <button id="3" class="add_button" style="margin: auto" ><strong>Add</strong></button>
+                </div>
+            </div>
+
+            <div id="listCourses" onclick="flip('COMP530', event);">
+                <div class="course" id="COMP530">
+                    <div class="courseName">
+                        <center>comp</center>
+                    </div>
+                    <div class="courseNumber">
+                        <center>530</center>
+                    </div>
+                    <!--<button id="4" style="margin: auto" onclick="addClass(4,'COMP530')"><strong>Add</strong></button>-->
+                    <button id="4" class="add_button" style="margin: auto" ><strong>Add</strong></button>
+                </div>
+            </div>
+
+            <div id="listCourses" onclick="flip('ENGL105', event);">
+                <div class="course" id="ENGL105">
+                    <div class="courseName">
+                        <center>engl</center>
+                    </div>
+                    <div class="courseNumber">
+                        <center>105</center>
+                    </div>
+                    <!--<button id="5" style="margin: auto" onclick="addClass(5,'ENGL105')"><strong>Add</strong></button>-->
+                    <button id="5" class="add_button" style="margin: auto" ><strong>Add</strong></button>
+                </div>
+            </div>
+
+            <div id="listCourses" onclick="flip('COMP575', event);">
+                <div class="course" id="COMP575">
+                    <div class="courseName">
+                        <center>comp</center>
+                    </div>
+                    <div class="courseNumber">
+                        <center>575</center>
+                    </div>
+                    <!--<button id="6" style="margin: auto" onclick="addClass(6,'COMP575')"><strong>Add</strong></button>-->
+                    <button id="6" class="add_button" style="margin: auto" ><strong>Add</strong></button>
+                </div>
+            </div>
+
+            <div id="listCourses" onclick="flip('COMP426', event);">
+                <div class="course" id="COMP426">
+                    <div class="courseName">
+                        <center>comp</center>
+                    </div>
+                    <div class="courseNumber">
+                        <center>426</center>
+                    </div>
+                    <!--<button id="7" style="margin: auto" onclick="addClass(7, 'COMP426')"><strong>Add</strong></button>-->
+                    <button id="7" class="add_button" style="margin: auto" ><strong>Add</strong></button>
+                </div>
+            </div>
+
+            <div id="listCourses" onclick="flip('COMP520', event);">
+                <div class="course" id="COMP520">
+                    <div class="courseName">
+                        <center>comp</center>
+                    </div>
+                    <div class="courseNumber">
+                        <center>520</center>
+                    </div>
+                    <!--<button id="8" style="margin: auto" onclick="addClass(8, 'COMP520')"><strong>Add</strong></button>-->
+                    <button id="8" class="add_button" style="margin: auto" ><strong>Add</strong></button>
+                </div>
+            </div>
+
+            <div id="listCourses" onclick="flip('COMP633', event);">
+                <div class="course" id="COMP633">
+                    <div class="courseName">
+                        <center>comp</center>
+                    </div>
+                    <div class="courseNumber">
+                        <center>633</center>
+                    </div>
+                    <!--<button id="9" style="margin: auto" onclick="addClass(9, 'COMP633')"><strong>Add</strong></button>-->
+                    <button id="9" class="add_button" style="margin: auto" ><strong>Add</strong></button>
+                </div>
+            </div>
+
+            <div id="listCourses" onclick="flip('COMP750', event);">
+                <div class="course" id="COMP750">
+                    <div class="courseName">
+                        <center>comp</center>
+                    </div>
+                    <div class="courseNumber">
+                        <center>750</center>
+                    </div>
+                    <!--<button id="10" style="margin: auto" onclick="addClass(10, 'COMP750')"><strong>Add</strong></button>-->
+                    <button id="10" class="add_button" style="margin: auto" ><strong>Add</strong></button>
+                </div>
+            </div>
+
+            <div class='overlay' id="overlay">
+                <div class='popup' id="popup">
+                    <div class='close' onclick="closePopup();">&#10006;</div>
+                    <h2 id="popupHeader">Popup</h2>
+                    <div id="extraInfo"></div>
+                </div>
+            </div>
+    </div>
+
+    </body>
+</html>
